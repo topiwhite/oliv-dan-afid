@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Olivia!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #2b2b52);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .stars, .hearts, .flowers {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .star, .heart, .flower {
+            position: absolute;
+        }
+        .star {
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 1s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+        .container::before {
+            top: -50px; left: -50px;
+            width: 100px; height: 100px;
+            background: rgba(173, 216, 230, 0.3);
+            animation: float 8s infinite ease-in-out;
+        }
+        .container::after {
+            bottom: -30px; right: -30px;
+            width: 60px; height: 60px;
+            background: rgba(138, 43, 226, 0.4);
+            animation: float 6s infinite ease-in-out 2s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #e6e6fa;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards 0.5s;
+        }
+        .birthday-name {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: #fe4164;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards 1s;
+        }
+        .birthdate {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards 1.5s;
+        }
+        .message {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards 2s;
+        }
+        .countdown {
+            margin: 30px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards 2.5s;
+        }
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .countdown-item {
+            background-color: #ff4757;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            min-width: 70px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .countdown-number { font-size: 1.5rem; }
+        .countdown-label { font-size: 0.8rem; opacity: 0.9; }
+        .heart {
+            width: 20px;
+            height: 20px;
+            background-color: #fe4164;
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: floatHeart linear infinite;
+        }
+        .heart:before, .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #ff4757;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { top: 0; left: -10px; }
+        @keyframes floatHeart {
+            0% { opacity: 0; transform: rotate(45deg) translateY(0) translateX(0); }
+            10% { opacity: 1; }
+            100% { opacity: 0; transform: rotate(45deg) translateY(-500px) translateX(100px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .flower {
+            font-size: 24px;
+            opacity: 0;
+            animation: floatFlower linear infinite;
+        }
+        @keyframes floatFlower {
+            0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
+            10% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .birthday-name { font-size: 1.8rem; }
+            .container { margin: 20px; padding: 15px; }
+            .countdown-item { padding: 8px 12px; min-width: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flowers"></div>
+    <div class="hearts"></div>
+    <div class="stars"></div>
+
+    <div class="container">
+        <h1>Happy Birthday</h1>
+        <div class="birthday-name">Olivia</div>
+        <div class="birthdate">20 July 2002</div>
+        <div class="message">
+            <p>Dear Olivia,</p>
+            <p>On this special day, I want you to know how much you mean to me.</p>
+            <p>Your smile brightens my darkest days, your laugh is my favorite melody.</p>
+            <p>May this year bring you all the happiness you bring to others.</p>
+            <p>Forever yours.</p>
+        </div>
+        <div class="countdown">
+            <p>Countdown to your next birthday:</p>
+            <div class="countdown-container">
+                <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">Days</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Musik Lokal -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="echo_acoustic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.querySelector('.stars') || document.createElement('div');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = `${Math.random() * 3 + 1}px`;
+                star.style.height = star.style.width;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+        function createHearts() {
+            const heartsContainer = document.querySelector('.hearts');
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heartsContainer.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 15000);
+                }, i * 1000);
+            }
+        }
+        function createFlowers() {
+            const flowersContainer = document.querySelector('.flowers');
+            const flowers = ['afid ❤️ oliv', '🌹', '🌻', '🌼', '🌷'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.classList.add('flower');
+                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                    flower.style.left = Math.random() * 100 + 'vw';
+                    flower.style.fontSize = (Math.random() * 10 + 20) + 'px';
+                    flower.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                    flower.style.animationDelay = Math.random() * 10 + 's';
+                    flowersContainer.appendChild(flower);
+                    setTimeout(() => { flower.remove(); }, 25000);
+                }, i * 1500);
+            }
+        }
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            let nextBirthday = new Date(currentYear, 6, 20);
+            if (now > nextBirthday) nextBirthday = new Date(currentYear + 1, 6, 20);
+            const diff = nextBirthday - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.addEventListener('click', () => {
+                const bgMusic = document.getElementById('bgMusic');
+                bgMusic.volume = 0.3;
+                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+            }, { once: true });
+            createStars();
+            createHearts();
+            createFlowers();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            setInterval(createHearts, 15000);
+            setInterval(createFlowers, 20000);
+        });
+    </script>
+</body>
+</html>
